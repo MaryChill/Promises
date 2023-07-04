@@ -1,8 +1,12 @@
 import GameSavingLoader from '../GameSavingLoader';
+import { saveData } from '../reader';
+import GameSaving from '../GameSaving';
 
-test('works promise', (done) => {
+const hitman = new GameSaving(JSON.parse(saveData));
+
+test('Test case №1', (done) => {
   GameSavingLoader.load().then((result) => {
-    expect(result).toEqual('{"id":9,"created":1546300800,"userInfo":{"id":1,"name":"Hitman","level":10,"points":2000}}');
+    expect(result).toEqual(hitman);
   }).catch((err) => err);
   done();
 });
